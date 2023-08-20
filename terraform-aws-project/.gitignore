@@ -1,7 +1,0 @@
-*.tfvars
-*.terraform
-terraform-aws-project
-terraform-aws-project/terraform.tfvars
-terraform-aws-project/.terraform
-terraform-aws-project\terraform.tfvars
-terraform-aws-project\.terraform
