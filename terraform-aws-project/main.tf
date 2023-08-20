@@ -16,3 +16,16 @@ module "vpc" {
   private_data_subnet_AZ1_CIDR = var.private_data_subnet_AZ1_CIDR
   private_data_subnet_AZ2_CIDR = var.private_data_subnet_AZ2_CIDR
 }
+
+#NAT Gateway Creation
+module "NAT-Gateway" {
+  source = "../modules/NAT-Gateway"
+  Public-Subnet-AZ2-ID = module.vpc.Public-Subnet-AZ2-ID
+  Public-Subnet-AZ1-ID = module.vpc.Public-Subnet-AZ1-ID
+  Internet-Gateway = module.vpc.Internet-Gateway
+  VPC_ID = module.vpc.VPC_ID
+  Private-App-Subnet-AZ1-ID = module.vpc.Private-App-Subnet-AZ1-ID
+  Private-Data-Subnet-AZ1-ID = module.vpc.Private-Data-Subnet-AZ1-ID
+  Private-App-Subnet-AZ2-ID = module.vpc.Private-App-Subnet-AZ2-ID
+  Private-Data-Subnet-AZ2-ID = module.vpc.Private-Data-Subnet-AZ2-ID
+}
