@@ -1,5 +1,5 @@
 *.tfvars
-*.terraform
+/.terraform
 terraform-aws-project/
 terraform-aws-project/terraform.tfvars/
 terraform-aws-project/.terraform/
