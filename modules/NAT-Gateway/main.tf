@@ -1,13 +1,13 @@
 #Elastic IP for NAT Gateway in AZ1
 resource "aws_eip" "EIP-NATGateway-AZ1" {
-    vpc = true
+    domain = "vpc"
     tags = {
         Name = "NATGateway_EIP_AZ1"
     }
 }
 #Elastic IP for NAT Gateway in AZ2
 resource "aws_eip" "EIP-NATGateway-AZ2" {
-    vpc = true
+    domain = "vpc"
     tags = {
         Name = "NATGateway_EIP_AZ2"
     }
@@ -23,7 +23,7 @@ resource "aws_nat_gateway" "NAT-Gateway-AZ1" {
     depends_on = [ var.Internet-Gateway ]
 }
 #NAT Gateway Creation in Public Subnet AZ2
-resource "aws_nat_gateway" "NAT-Gateway-AZ1" {
+resource "aws_nat_gateway" "NAT-Gateway-AZ2" {
     allocation_id = aws_eip.EIP-NATGateway-AZ2.id
     subnet_id = var.Public-Subnet-AZ2-ID
     tags = {
@@ -35,7 +35,7 @@ resource "aws_nat_gateway" "NAT-Gateway-AZ1" {
 #Route Table Creation for Private Subnets in AZ1
 resource "aws_route_table" "Private-RT-AZ1" {
     vpc_id = var.VPC_ID
-    route = {
+    route  {
         cidr_block  = "0.0.0.0/0"
         nat_gateway_id = aws_nat_gateway.NAT-Gateway-AZ1.id
     }
@@ -56,7 +56,7 @@ resource "aws_route_table_association" "Private_Data_Subnet_Association_AZ1" {
 #Route Table Creation for Private Subnets in AZ2
 resource "aws_route_table" "Private-RT-AZ2" {
     vpc_id = var.VPC_ID
-    route = {
+    route  {
         cidr_block  = "0.0.0.0/0"
         nat_gateway_id = aws_nat_gateway.NAT-Gateway-AZ2.id
     }
