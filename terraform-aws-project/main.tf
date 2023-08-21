@@ -47,3 +47,13 @@ module "acm" {
   domain_name      = var.domain_name
   alternative_name = var.alternative_name
 }
+#ALB
+module "Application_Load_Balancer" {
+  source               = "../modules/alb"
+  Project_Name         = module.vpc.Project_Name
+  ALB-SG-ID            = module.Security_Group.ALB-SG-ID
+  Public-Subnet-AZ1-ID = module.vpc.Public-Subnet-AZ1-ID
+  Public-Subnet-AZ2-ID = module.vpc.Public-Subnet-AZ2-ID
+  VPC_ID               = module.vpc.VPC_ID
+  certificate_arn      = module.acm.certificate_arn
+}
