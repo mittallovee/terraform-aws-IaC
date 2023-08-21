@@ -29,3 +29,9 @@ module "NAT-Gateway" {
   Private-App-Subnet-AZ2-ID  = module.vpc.Private-App-Subnet-AZ2-ID
   Private-Data-Subnet-AZ2-ID = module.vpc.Private-Data-Subnet-AZ2-ID
 }
+
+#Security Group Module
+module "Security_Group" {
+  source = "../modules/Security-Groups"
+  VPC_ID = module.vpc.VPC_ID
+}
