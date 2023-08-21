@@ -1,0 +1,11 @@
+variable "projectName" {}
+variable "instance-ami" {}
+variable "instance-type" {}
+variable "instance-key-name" {}
+variable "SG-EC2-ID" {}
+variable "public-subnet-1-ID" {}
+variable "public-subnet-2-ID" {}
+variable "lb-tg-arn" {}
+variable "desired-capacity" {}
+variable "max-size" {}
+variable "min-size" {}
