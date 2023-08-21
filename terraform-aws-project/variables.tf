@@ -8,3 +8,5 @@ variable "private_app_subnet_AZ1_CIDR" {}
 variable "private_app_subnet_AZ2_CIDR" {}
 variable "private_data_subnet_AZ1_CIDR" {}
 variable "private_data_subnet_AZ2_CIDR" {}
+variable "domain_name" {}
+variable "alternative_name" {}

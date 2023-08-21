@@ -35,3 +35,15 @@ module "Security_Group" {
   source = "../modules/Security-Groups"
   VPC_ID = module.vpc.VPC_ID
 }
+
+#ECS Role
+module "ECS-TaskExecutionRole" {
+  source       = "../modules/ECS-TaskExecution-Role"
+  Project_Name = module.vpc.Project_Name
+}
+#Certificate
+module "acm" {
+  source           = "../modules/acm"
+  domain_name      = var.domain_name
+  alternative_name = var.alternative_name
+}
