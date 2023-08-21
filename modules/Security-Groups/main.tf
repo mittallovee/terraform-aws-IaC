@@ -30,8 +30,8 @@ resource "aws_security_group" "ALB-Security-Group" {
 }
 
 #Security Group for ECS
-resource "aws_security_group" "ECS-Security-Group" {
-    name = "ECS_Security_Group"
+resource "aws_security_group" "EC2-Security-Group" {
+    name = "EC2_Security_Group"
     description = "Enabling ports 80,443 for HTTP, HTTPS"
     vpc_id = var.VPC_ID
     ingress {
@@ -56,6 +56,6 @@ resource "aws_security_group" "ECS-Security-Group" {
         cidr_blocks = ["0.0.0.0/0"]      
     }  
     tags = {
-        Name = "ECS Security Group"
+        Name = "EC2 Security Group"
     }
 }
